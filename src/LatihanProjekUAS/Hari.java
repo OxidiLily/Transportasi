@@ -1,4 +1,4 @@
-package projekuas;
+package LatihanProjekUAS;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package tampilancoba2;
+package TampilanProjek;
 
 
 import javax.swing.JOptionPane;

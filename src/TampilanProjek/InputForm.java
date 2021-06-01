@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tampilancoba2;
+package TampilanProjek;
 
-import tampilancoba2.ConnectionDB;
-import tampilancoba2.OptionMenu;
+import TampilanProjek.ConnectionDB;
+import TampilanProjek.OptionMenu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

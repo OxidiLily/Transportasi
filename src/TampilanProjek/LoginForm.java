@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tampilancoba2;
+package TampilanProjek;
 
-import tampilancoba2.OptionMenu;
+import TampilanProjek.OptionMenu;
 import javax.swing.JOptionPane;
 
 /**

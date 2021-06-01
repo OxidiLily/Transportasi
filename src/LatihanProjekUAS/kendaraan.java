@@ -1,4 +1,4 @@
-package projekuas;
+package LatihanProjekUAS;
 /**
  *
  * @author My MSI

@@ -7,12 +7,18 @@ package TampilanProjek;
 
 
 
+import static TampilanProjek.ConnectionDB.conn;
+import static TampilanProjek.ConnectionDB.jdbc_Driver;
 import com.mysql.jdbc.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -25,8 +31,8 @@ public class DataForm extends javax.swing.JInternalFrame {
     /**
      * Creates new form DataForm
      */
+    
     String sql = "Select * From kendaraan";
-    String delete = "DELETE FROM kendaraan";
     public DataForm() {
         initComponents();
         showTable(sql);
@@ -55,7 +61,8 @@ public class DataForm extends javax.swing.JInternalFrame {
         hapusBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        id_User = new javax.swing.JTextField();
+        user = new javax.swing.JTextField();
+        updateBtn = new javax.swing.JButton();
 
         TableData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,25 +115,25 @@ public class DataForm extends javax.swing.JInternalFrame {
 
         jLabel5.setText("User ID");
 
+        updateBtn.setText("Update Data");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(258, 258, 258)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(id_User, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(menuUtamaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 333, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(314, 314, 314)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(264, 264, 264))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
@@ -135,23 +142,35 @@ public class DataForm extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(namaTxt)
                             .addComponent(tujuanTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Cari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(refresh, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(195, 195, 195)
-                                .addComponent(hapusBtn))
+                                .addComponent(menuUtamaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)
+                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(94, 94, 94)
-                                .addComponent(jLabel5)))
-                        .addContainerGap(388, Short.MAX_VALUE))
+                                .addComponent(Cari, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(210, 210, 210)
+                                        .addComponent(hapusBtn))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(109, 109, 109)
+                                        .addComponent(jLabel5)))))
+                        .addContainerGap(405, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(420, 420, 420)
+                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(314, 314, 314)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(264, 264, 264))))
+                        .addGap(600, 600, 600)
+                        .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,27 +181,34 @@ public class DataForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(namaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cari)
-                    .addComponent(jLabel5)
-                    .addComponent(id_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(tujuanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(refresh)
-                            .addComponent(hapusBtn))))
-                .addGap(63, 63, 63)
-                .addComponent(menuUtamaBtn)
-                .addContainerGap(59, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(namaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(tujuanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(hapusBtn)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addComponent(refresh)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cari)
+                        .addGap(86, 86, 86)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuUtamaBtn)
+                    .addComponent(updateBtn))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -221,21 +247,56 @@ public class DataForm extends javax.swing.JInternalFrame {
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
         namaTxt.setText("");
         tujuanTxt.setText("");
-        id_User.setText("");
+        user.setText("");
         showTable(sql);
     }//GEN-LAST:event_refreshActionPerformed
 
     private void hapusBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusBtnActionPerformed
-        if(id_User.getText().isEmpty()){
+         if(user.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, 
                     "Masuukan DATA yang ingin di Hapus",
                     "ERROR",JOptionPane.ERROR_MESSAGE);
             showTable(sql);
         } else {
-            showTable("DELETE FROM kendaraan = '" +id_User.getText()+"' ");    
-            showTable(sql);
+            String id = user.getText();
+            String SQL = "DELETE FROM kendaraan WHERE id_User = '"+id+"' ";
+
+            try {
+                Class.forName(jdbc_Driver);
+            }  catch (Exception e) {
+                JOptionPane.showMessageDialog(null,"JDBC Driver Gagal","JDBC Driver Error",JOptionPane.WARNING_MESSAGE);
+            }
+
+            Statement stmt = null;
+            Connection con = null;
+
+            //Membuat Koneksi ke database
+            try {
+                stmt = (Statement) conn.createStatement();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane,"Koneksi Gagal","Connection Error",JOptionPane.WARNING_MESSAGE);
+            }
+
+            //Menjalankan SQL untuk menghapus Catatan
+            try {
+                stmt.executeUpdate(SQL);
+                //Kata untuk SQL bila berhasil
+                JOptionPane.showMessageDialog(rootPane,"Data Berhasil Terhapus","Delete Successful",JOptionPane.WARNING_MESSAGE);
+            } catch (Exception e) {
+                //Kata untuk SQL bila gagal
+                JOptionPane.showMessageDialog(rootPane,"Data Gagal Terhapus","Warning",JOptionPane.WARNING_MESSAGE);
+            }
         }
+        showTable(sql);
+        user.setText("");
     }//GEN-LAST:event_hapusBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        UpdateForm update = new UpdateForm();
+        update.setVisible(true);
+        this.getDesktopPane().add(update);
+        this.dispose();
+    }//GEN-LAST:event_updateBtnActionPerformed
     public final void showTable(String sql){
         try{
             Statement stat =(Statement)ConnectionDB.connectDatabase().createStatement();
@@ -260,7 +321,6 @@ public class DataForm extends javax.swing.JInternalFrame {
     private javax.swing.JButton Cari;
     private javax.swing.JTable TableData;
     private javax.swing.JButton hapusBtn;
-    private javax.swing.JTextField id_User;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -271,5 +331,7 @@ public class DataForm extends javax.swing.JInternalFrame {
     private javax.swing.JTextField namaTxt;
     private javax.swing.JButton refresh;
     private javax.swing.JTextField tujuanTxt;
+    private javax.swing.JButton updateBtn;
+    private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

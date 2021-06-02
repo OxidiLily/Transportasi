@@ -57,8 +57,14 @@ public class InputForm extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         stjbox = new javax.swing.JCheckBox();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
 
-        setTitle("DATA KENDARAAN");
+        setTitle("MASUKKAN DATA KENDARAAN");
 
         jLabel1.setText("Nama Pemilik");
 
@@ -105,6 +111,18 @@ public class InputForm extends javax.swing.JInternalFrame {
 
         stjbox.setText("Setuju");
 
+        jLabel11.setText("*");
+
+        jLabel12.setText("*");
+
+        jLabel13.setText("*");
+
+        jLabel14.setText("*");
+
+        jLabel15.setText("*");
+
+        jLabel16.setText("*");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,15 +152,24 @@ public class InputForm extends javax.swing.JInternalFrame {
                     .addComponent(kecepatanTxt)
                     .addComponent(waktuTxt)
                     .addComponent(jarakTxt))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(stjbox)
                             .addComponent(jLabel10))
-                        .addContainerGap(64, Short.MAX_VALUE))
+                        .addContainerGap(62, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
                             .addComponent(jLabel8))
@@ -152,40 +179,50 @@ public class InputForm extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(namaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(kendaraanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(merkTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tujuanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(stjbox)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kecepatanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(namaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(kendaraanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(merkTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel15)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tujuanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(stjbox)
+                                .addComponent(jLabel11)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(kecepatanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel12)))
+                    .addComponent(jLabel13))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(waktuTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jarakTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(prosesBtn)
                     .addComponent(simpanBtn)
@@ -209,9 +246,8 @@ public class InputForm extends javax.swing.JInternalFrame {
 
     private void prosesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prosesBtnActionPerformed
 
-        if (kecepatanTxt.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Periksa Data yang anda input");
-        } else if (waktuTxt.getText().isEmpty()){
+        if (kecepatanTxt.getText().isEmpty()&& waktuTxt.getText().isEmpty()&& namaTxt.getText().isEmpty() 
+                && kendaraanTxt.getText().isEmpty() && merkTxt.getText().isEmpty() && tujuanTxt.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Periksa Data yang anda input");
         }else{
             double kecepatan = Double.valueOf(kecepatanTxt.getText().trim());
@@ -225,11 +261,16 @@ public class InputForm extends javax.swing.JInternalFrame {
 
     private void simpanBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanBtnActionPerformed
         if(stjbox.isSelected() == false){
-            JOptionPane.showMessageDialog(null, "Klick Centang untuk simpan ","Error",JOptionPane.ERROR_MESSAGE);
-        }else if(kecepatanTxt.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Periksa Data yang anda input");
-        } else if (waktuTxt.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Periksa Data yang anda input");
+            JOptionPane.showMessageDialog(null, "Centang Setuju untuk simpan Data","Error",JOptionPane.ERROR_MESSAGE);
+            
+        }else if(kecepatanTxt.getText().isEmpty()&& waktuTxt.getText().isEmpty()&& namaTxt.getText().isEmpty() 
+            && kendaraanTxt.getText().isEmpty() && merkTxt.getText().isEmpty() && tujuanTxt.getText().isEmpty()){
+            
+            JOptionPane.showMessageDialog(null, "Masukkan Data yang Benar","Error",JOptionPane.ERROR_MESSAGE);
+            OptionMenu optionMenu = new OptionMenu();
+            optionMenu.setVisible(true);
+            this.getDesktopPane().add(optionMenu);
+            this.dispose();
         }else{
             double kecepatan = Double.valueOf(kecepatanTxt.getText().trim());
             double waktu = Double.valueOf(waktuTxt.getText().trim());
@@ -237,34 +278,40 @@ public class InputForm extends javax.swing.JInternalFrame {
             double hasil = kecepatan*waktu;
             jarakTxt.setText(""+hasil);
             
-        }
-        try {
-            String sql = "Insert Into Kendaraan(Nama_Pemilik,Nama_Kendaraan,Nama_Merk,Tujuan,kecepatan,waktu,jarak) VALUES ('"
-                    
-                    +namaTxt.getText()+"','"
-                    +kendaraanTxt.getText()+"','"
-                    +merkTxt.getText()+"','"
-                    +tujuanTxt.getText()+"','"
-                    +kecepatanTxt.getText()+"','"
-                    +waktuTxt.getText()+"','"
-                    +jarakTxt.getText()+"')";
-            Connection conn = (Connection)ConnectionDB.connectDatabase();
-            PreparedStatement pst = (PreparedStatement)conn.prepareStatement(sql);
-            pst.execute();
-                    } catch (SQLException ex) {
-            Logger.getLogger(InputForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        OptionMenu optionMenu = new OptionMenu();
-        optionMenu.setVisible(true);
-        this.getDesktopPane().add(optionMenu);
-        this.dispose();
-    }//GEN-LAST:event_simpanBtnActionPerformed
+        
+            try {
+                String sql = "Insert Into kendaraan(Nama_Pemilik,Nama_Kendaraan,Nama_Merk,Tujuan,kecepatan,waktu,jarak) VALUES ('"
 
+                        +namaTxt.getText()+"','"
+                        +kendaraanTxt.getText()+"','"
+                        +merkTxt.getText()+"','"
+                        +tujuanTxt.getText()+"','"
+                        +kecepatanTxt.getText()+"','"
+                        +waktuTxt.getText()+"','"
+                        +jarakTxt.getText()+"')";
+                Connection conn = (Connection)ConnectionDB.connectDatabase();
+                PreparedStatement pst = (PreparedStatement)conn.prepareStatement(sql);
+                pst.execute();
+                        } catch (SQLException ex) {
+                Logger.getLogger(InputForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            OptionMenu optionMenu = new OptionMenu();
+            optionMenu.setVisible(true);
+            this.getDesktopPane().add(optionMenu);
+            this.dispose();
+    }//GEN-LAST:event_simpanBtnActionPerformed
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton hapusBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

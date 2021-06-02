@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  */
 public class ConnectionDB {
     static final String jdbc_Driver = "com.mysql.jdbc.Driver";
-    static final String url="jdbc:mysql://localhost:3306/PBO";
+    static final String url="jdbc:mysql://localhost:3306/pbo";
     static final String user ="root";
     static final String pass ="";
     static  Connection conn;
@@ -41,5 +41,4 @@ public class ConnectionDB {
         }
             return conn;
     }
-
 }

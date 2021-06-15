@@ -22,14 +22,18 @@ public class ConnectionDB {
     static final String url="jdbc:mysql://localhost:3306/pbo";
     static final String user ="root";
     static final String pass ="";
-    static  Connection conn;
+    static Connection conn;
     static Statement stat;
     static ResultSet rs;
     
     public static Connection connectDatabase(){
+        //try pernyataan memungkinkan untuk menentukan blok kode yang akan diuji untuk kesalahan ketika sedang dijalankan.
+        //catch pernyataan memungkinkan untuk menentukan blok kode yang akan dieksekusi, jika terjadi kesalahan dalam blok try.
         try {
-            Class.forName(jdbc_Driver);
+            Class.forName(jdbc_Driver); // Class.forName untuk registrasiclass driver dan melakukan intansiasi
         } catch (ClassNotFoundException cnf){
+            
+        //Apabila driver yang dimaksud tidak ditemukan, maka program akan menghasilkan exception berupa ClassNotFoundException
         
         } try {
             conn = (Connection) DriverManager.getConnection(url, user, pass);

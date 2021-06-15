@@ -38,6 +38,7 @@
             <obfuscate>
                 <fileset dir="${build.classes.dir}"/>
             </obfuscate>
+            
         </target>
 
     For list of available properties check the imported 

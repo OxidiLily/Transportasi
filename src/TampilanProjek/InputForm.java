@@ -129,29 +129,32 @@ public class InputForm extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(164, 164, 164)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(prosesBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                        .addComponent(simpanBtn)
-                        .addGap(40, 40, 40)
-                        .addComponent(hapusBtn))
-                    .addComponent(namaTxt)
-                    .addComponent(kendaraanTxt)
-                    .addComponent(merkTxt)
-                    .addComponent(tujuanTxt)
-                    .addComponent(kecepatanTxt)
-                    .addComponent(waktuTxt)
-                    .addComponent(jarakTxt))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(164, 164, 164)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(namaTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                            .addComponent(kendaraanTxt)
+                            .addComponent(merkTxt)
+                            .addComponent(tujuanTxt)
+                            .addComponent(kecepatanTxt)
+                            .addComponent(waktuTxt)
+                            .addComponent(jarakTxt)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(164, 164, 164)
+                        .addComponent(prosesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addComponent(simpanBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(hapusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,10 +292,15 @@ public class InputForm extends javax.swing.JInternalFrame {
                         +kecepatanTxt.getText()+"','"
                         +waktuTxt.getText()+"','"
                         +jarakTxt.getText()+"')";
-                Connection conn = (Connection)ConnectionDB.connectDatabase();
+                
+                //Connection yang dibuat untuk membangun koneksi dengan database server tidak dengan cara membuat object baru dari interface Connection 
+                //melainkan dari class DriverManager dengan menggunakan methode getConnection().
+                Connection conn = (Connection)ConnectionDB.connectDatabase(); 
+                
+                //Object Statement digunakan untuk pengiriman statement SQL tanpa parameter serta Setiap SQL statement yang dieksekusi dikirim secara utuh ke database. 
                 PreparedStatement pst = (PreparedStatement)conn.prepareStatement(sql);
                 pst.execute();
-                        } catch (SQLException ex) {
+            } catch (SQLException ex) {
                 Logger.getLogger(InputForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             OptionMenu optionMenu = new OptionMenu();

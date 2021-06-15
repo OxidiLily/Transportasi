@@ -131,15 +131,16 @@ public class UpdateForm extends javax.swing.JInternalFrame {
                 .addComponent(stjbox)
                 .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
-                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(hapusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(166, 166, 166))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addComponent(menuUtamaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(43, 43, 43)
+                        .addComponent(hapusBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(151, 151, 151))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(menuUtamaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(212, 212, 212))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,13 +174,13 @@ public class UpdateForm extends javax.swing.JInternalFrame {
                     .addComponent(tujuanTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stjbox)
                     .addComponent(jLabel10))
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(updateBtn)
                     .addComponent(hapusBtn))
                 .addGap(18, 18, 18)
                 .addComponent(menuUtamaBtn)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -211,7 +212,10 @@ public class UpdateForm extends javax.swing.JInternalFrame {
             String id = user.getText();
             
             String SQL = "UPDATE kendaraan SET Nama_Pemilik = '"+nama+"', Nama_Kendaraan = '"+kendaraan+"', Nama_Merk = '"+merk+"', Tujuan = '"+tujuan+"' WHERE id_User = '"+id+"' ";
-
+            
+            //try pernyataan memungkinkan untuk menentukan blok kode yang akan diuji untuk kesalahan ketika sedang dijalankan.
+            //catch pernyataan memungkinkan untuk menentukan blok kode yang akan dieksekusi, jika terjadi kesalahan dalam blok try.
+    
             try {
                 Class.forName(jdbc_Driver);
             }  catch (Exception e) {
@@ -230,6 +234,7 @@ public class UpdateForm extends javax.swing.JInternalFrame {
 
             //Menjalankan SQL untuk update Catatan
             try {
+                //untuk perintah INSERT, UPDATE, DELETE methode eksekusi SQL yang digunakan adalah executeUpdate().
                 stmt.executeUpdate(SQL);
                 //Kata untuk SQL bila berhasil
                 JOptionPane.showMessageDialog(rootPane,"Data Berhasil di Ubah","Update Successful",JOptionPane.WARNING_MESSAGE);

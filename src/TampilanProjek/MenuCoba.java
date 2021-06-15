@@ -32,6 +32,7 @@ public class MenuCoba extends javax.swing.JFrame {
     private void initComponents() {
 
         DesktopPane = new javax.swing.JDesktopPane();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         loginmenu = new javax.swing.JMenu();
         loginMenu = new javax.swing.JMenuItem();
@@ -40,21 +41,39 @@ public class MenuCoba extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setBackground(new java.awt.Color(225, 248, 220));
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(225, 248, 220));
+        jLabel1.setText("Selamat Datang");
+
+        DesktopPane.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout DesktopPaneLayout = new javax.swing.GroupLayout(DesktopPane);
         DesktopPane.setLayout(DesktopPaneLayout);
         DesktopPaneLayout.setHorizontalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1108, Short.MAX_VALUE)
+            .addGroup(DesktopPaneLayout.createSequentialGroup()
+                .addGap(409, 409, 409)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                .addGap(412, 412, 412))
         );
         DesktopPaneLayout.setVerticalGroup(
             DesktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 689, Short.MAX_VALUE)
+            .addGroup(DesktopPaneLayout.createSequentialGroup()
+                .addGap(247, 247, 247)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                .addGap(295, 295, 295))
         );
 
-        loginmenu.setText("File");
+        loginmenu.setText("Menu");
         loginmenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginmenuActionPerformed(evt);
+            }
+        });
+        loginmenu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                loginmenuKeyPressed(evt);
             }
         });
 
@@ -139,6 +158,10 @@ public class MenuCoba extends javax.swing.JFrame {
       
     }//GEN-LAST:event_logoutMenuActionPerformed
 
+    private void loginmenuKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginmenuKeyPressed
+        
+    }//GEN-LAST:event_loginmenuKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -177,6 +200,7 @@ public class MenuCoba extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane DesktopPane;
     private javax.swing.JMenuItem exitMenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem loginMenu;
     private javax.swing.JMenu loginmenu;

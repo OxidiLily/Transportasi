@@ -58,15 +58,15 @@ public class LoginForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                     .addComponent(passwordTxt))
                 .addGap(18, 18, 18))
             .addGroup(layout.createSequentialGroup()
                 .addGap(157, 157, 157)
-                .addComponent(loginbtn)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addComponent(loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,10 +93,10 @@ public class LoginForm extends javax.swing.JInternalFrame {
         
         if (usernameTxt.getText().equals(username) && passwordTxt.getText().equals(password)){
             JOptionPane.showMessageDialog(null, "Login Berhasil");
-            OptionMenu optionMenu = new OptionMenu();
-            optionMenu.setVisible(true);
-            this.getDesktopPane().add(optionMenu);
-            this.dispose();
+            OptionMenu optionMenu = new OptionMenu();// memanggil kelas OptionMenu
+            optionMenu.setVisible(true);             // run kelas OptionMenu
+            this.getDesktopPane().add(optionMenu);   
+            this.dispose();                          // close LoginForm, open OptionMenu
         } else{
             JOptionPane.showMessageDialog(null, "username/password Salah");
         }

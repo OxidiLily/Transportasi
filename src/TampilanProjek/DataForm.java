@@ -11,14 +11,11 @@ import static TampilanProjek.ConnectionDB.conn;
 import static TampilanProjek.ConnectionDB.jdbc_Driver;
 import com.mysql.jdbc.Statement;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -32,10 +29,12 @@ public class DataForm extends javax.swing.JInternalFrame {
      * Creates new form DataForm
      */
     
-    String sql = "Select * From kendaraan";
+    String sql = "Select * From kendaraan"; //String variabel global untuk memilih sebuah tabel dari database
+    
+    
     public DataForm() {
         initComponents();
-        showTable(sql);
+        showTable(sql); //Method untuk menampilkan Data
         
     }
 
@@ -145,10 +144,6 @@ public class DataForm extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(menuUtamaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(Cari, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -156,20 +151,22 @@ public class DataForm extends javax.swing.JInternalFrame {
                                         .addComponent(hapusBtn))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(109, 109, 109)
-                                        .addComponent(jLabel5)))))
-                        .addContainerGap(405, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(420, 420, 420)
-                .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jLabel5)))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(menuUtamaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)
+                                .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(393, 393, 393))))))
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(600, 600, 600)
                         .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(418, 418, 418)
+                        .addComponent(refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -198,17 +195,18 @@ public class DataForm extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(14, 14, 14)
                                 .addComponent(hapusBtn)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                        .addComponent(refresh)
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(28, 34, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Cari)
-                        .addGap(86, 86, 86)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(8, 8, 8)
+                .addComponent(refresh)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(menuUtamaBtn)
                     .addComponent(updateBtn))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -262,28 +260,31 @@ public class DataForm extends javax.swing.JInternalFrame {
             String SQL = "DELETE FROM kendaraan WHERE id_User = '"+id+"' ";
 
             try {
-                Class.forName(jdbc_Driver);
+                Class.forName(jdbc_Driver);  // Class.forName untuk registrasiclass driver dan melakukan intansiasi
             }  catch (Exception e) {
                 JOptionPane.showMessageDialog(null,"JDBC Driver Gagal","JDBC Driver Error",JOptionPane.WARNING_MESSAGE);
             }
 
             Statement stmt = null;
             Connection con = null;
-
+            
+            //try pernyataan memungkinkan untuk menentukan blok kode yang akan diuji untuk kesalahan ketika sedang dijalankan.
+            //catch pernyataan memungkinkan untuk menentukan blok kode yang akan dieksekusi, jika terjadi kesalahan dalam blok try.
+        
             //Membuat Koneksi ke database
             try {
                 stmt = (Statement) conn.createStatement();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(rootPane,"Koneksi Gagal","Connection Error",JOptionPane.WARNING_MESSAGE);
             }
-
             //Menjalankan SQL untuk menghapus Catatan
             try {
+                //untuk perintah INSERT, UPDATE, DELETE methode eksekusi yang digunakan adalah executeUpdate().
                 stmt.executeUpdate(SQL);
-                //Kata untuk SQL bila berhasil
+                //untuk SQL bila berhasil
                 JOptionPane.showMessageDialog(rootPane,"Data Berhasil Terhapus","Delete Successful",JOptionPane.WARNING_MESSAGE);
             } catch (Exception e) {
-                //Kata untuk SQL bila gagal
+                //untuk SQL bila gagal
                 JOptionPane.showMessageDialog(rootPane,"Data Gagal Terhapus","Warning",JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -298,18 +299,22 @@ public class DataForm extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_updateBtnActionPerformed
     public final void showTable(String sql){
+        //try pernyataan memungkinkan untuk menentukan blok kode yang akan diuji untuk kesalahan ketika sedang dijalankan.
+        //catch pernyataan memungkinkan untuk menentukan blok kode yang akan dieksekusi, jika terjadi kesalahan dalam blok try.
         try{
+            //Object Statement digunakan untuk pengiriman statement SQL tanpa parameter serta Setiap SQL statement yang dieksekusi dikirim secara utuh ke database. 
             Statement stat =(Statement)ConnectionDB.connectDatabase().createStatement();
+            //Methode eksekusi yang digunakan untuk perintah SQL SELECT methode eksekusi yang digunakan adalah executeQery() dengan nilai kembaliannya adalah ResultSet
             ResultSet rs = stat.executeQuery(sql);
-            DefaultTableModel tableModel;
-            tableModel = (DefaultTableModel)TableData.getModel();
-            tableModel.getDataVector().removeAllElements();
+            DefaultTableModel tabelkosong;
+            tabelkosong = (DefaultTableModel)TableData.getModel();
+            tabelkosong.getDataVector().removeAllElements();
             while(rs.next()){
-                tableModel.addRow(new Object[]{
+                tabelkosong.addRow(new Object[]{
                     rs.getString(1), rs.getString(2), rs.getString(3),
                     rs.getString(4), rs.getString(5), rs.getString(6),
-                    rs.getString(7),rs.getString(8)
-                });
+                    rs.getString(7),rs.getString(8)}
+            );
             }
         } catch(SQLException ex){
             Logger.getLogger(DataForm.class.getName()).log(Level.SEVERE,null,ex);

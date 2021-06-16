@@ -22,7 +22,7 @@ public class ConrtollerKendaraan {
     KendaraanInterface interfaceK;
     List<ModelKendaraan> kendaraan;        
 
-    public ConrtollerKendaraan(DataForm frame, KendaraanInterface interfaceK, List<ModelKendaraan> lmk) {
+    public ConrtollerKendaraan(DataForm frame, KendaraanInterface interfaceK, List<ModelKendaraan> kendaraan) {
         this.frame = frame;
         interfaceK = new DAOKendaraan();
         kendaraan = interfaceK.getAll();
@@ -70,12 +70,36 @@ public class ConrtollerKendaraan {
 
             double hasil = kecepatan*waktu;
             frame.getJarakTxt().setText(""+hasil);
-
+            
         }    
     }
     public void delete(){
-        
+        if (!frame.getUser().getText().trim().isEmpty()){
+            int id_User = Integer.parseInt(frame.getUser().getText());
+            
+            interfaceK.delete(id_User);
+            JOptionPane.showMessageDialog(null, "Data di Hapus");
+        } else{
+            JOptionPane.showMessageDialog(null, "Data gagal di Hapus");
+        }
     }
+    public void update (){
+        if (!frame.getUser().getText().trim().isEmpty()){
+            
+            ModelKendaraan ubah = new ModelKendaraan();
+            
+            ubah.setNama_pemilik(frame.getNamaTxt().getText());
+            ubah.setNama_kendaraan(frame.getKendaraanTxt().getText());
+            ubah.setTujuan(frame.getTujuanTxt().getText());
+            ubah.setNama_merk(frame.getMerkTxt().getText());
+            
+         interfaceK.update(ubah);
+            JOptionPane.showMessageDialog(null, "Data di Perbarui");
+        } else{
+            JOptionPane.showMessageDialog(null, "Data gagal di Perbarui");
+        }
+        
+    } 
 }
 
    

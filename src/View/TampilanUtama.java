@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package TampilanProjek;
+package View;
 
-import TampilanProjek.OptionMenu;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author My MSI
  */
-public class LoginForm extends javax.swing.JInternalFrame {
+public class TampilanUtama extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginForm
+     * Creates new form TampilanUtama
      */
-    public LoginForm() {
+    public TampilanUtama() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
@@ -30,17 +30,13 @@ public class LoginForm extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        passwordTxt = new javax.swing.JPasswordField();
+        loginbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         usernameTxt = new javax.swing.JTextField();
-        passwordTxt = new javax.swing.JPasswordField();
-        loginbtn = new javax.swing.JButton();
 
-        setTitle("LOGIN");
-
-        jLabel1.setText("username");
-
-        jLabel2.setText("Password");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         loginbtn.setText("LOGIN");
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +44,10 @@ public class LoginForm extends javax.swing.JInternalFrame {
                 loginbtnActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("username");
+
+        jLabel2.setText("Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,7 +58,7 @@ public class LoginForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
                     .addComponent(passwordTxt))
@@ -79,7 +79,7 @@ public class LoginForm extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addComponent(loginbtn)
                 .addGap(29, 29, 29))
         );
@@ -93,15 +93,48 @@ public class LoginForm extends javax.swing.JInternalFrame {
         
         if (usernameTxt.getText().equals(username) && passwordTxt.getText().equals(password)){
             JOptionPane.showMessageDialog(null, "Login Berhasil");
-            OptionMenu optionMenu = new OptionMenu();// memanggil kelas OptionMenu
-            optionMenu.setVisible(true);             // run kelas OptionMenu
-            this.getDesktopPane().add(optionMenu);   
+            DataForm data = new DataForm();// memanggil kelas OptionMenu
+            data.setVisible(true);             // run kelas OptionMenu   
             this.dispose();                          // close LoginForm, open OptionMenu
         } else{
             JOptionPane.showMessageDialog(null, "username/password Salah");
         }
     }//GEN-LAST:event_loginbtnActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(TampilanUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(TampilanUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(TampilanUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(TampilanUtama.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TampilanUtama().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

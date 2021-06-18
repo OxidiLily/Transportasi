@@ -65,12 +65,21 @@ public class ConrtollerKendaraan {
             && !frame.getKendaraanTxt().getText().isEmpty() && !frame.getMerkTxt().getText().isEmpty() && !frame.getTujuanTxt().getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Periksa Data yang anda input");
         }else{
-            double kecepatan = Double.valueOf(frame.getKecepatanTxt().getText().trim());
-            double waktu = Double.valueOf(frame.getWaktuTxt().getText().trim());
-
-            double hasil = kecepatan*waktu;
-            frame.getJarakTxt().setText(""+hasil);
+            ModelKendaraan tambah = new ModelKendaraan();
             
+            tambah.setNama_pemilik(frame.getNamaTxt().getText());
+            tambah.setNama_kendaraan(frame.getKendaraanTxt().getText());
+            tambah.setTujuan(frame.getTujuanTxt().getText());
+            tambah.setNama_merk(frame.getMerkTxt().getText());
+            tambah.setKecepatan(Integer.valueOf(frame.getKecepatanTxt().getText()));
+            tambah.setWaktu(Integer.valueOf(frame.getWaktuTxt().getText()));
+            
+            int kecepatan = Integer.valueOf(frame.getKecepatanTxt().getText().trim());
+            int waktu = Integer.valueOf(frame.getWaktuTxt().getText().trim());
+
+            int hasil = kecepatan*waktu;
+            frame.getJarakTxt().setText(""+hasil);
+            interfaceK.insert(tambah);
         }    
     }
     public void delete(){
@@ -98,8 +107,21 @@ public class ConrtollerKendaraan {
         } else{
             JOptionPane.showMessageDialog(null, "Data gagal di Perbarui");
         }
-        
-    } 
+    }
+    public void isiCari(){
+        kendaraan = interfaceK.getCari( Integer.valueOf(frame.getUser().getText()));
+        ModelTabelKendaraan mtk = new ModelTabelKendaraan(kendaraan);
+        frame.getTableData().setModel(mtk);    
+    }
+    public void cari(){
+        if(!frame.getUser().getText().trim().isEmpty()){
+            isiCari();
+        }else{
+            JOptionPane.showMessageDialog(null, "Periksa Data yang anda input");
+        }
+    
+    
+    }
 }
 
    

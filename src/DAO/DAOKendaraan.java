@@ -25,8 +25,8 @@ import java.util.logging.Logger;
 public class DAOKendaraan implements KendaraanInterface{
 
     Connection connection;
-    final String insert = "INSERT INTO kendaraan ( nama_pemilik, nama_kendaraan, nama_merk, Tujuan, kecepatan, waktu , jarak) VALUES(?,?,?,?,?,?,?)";
-    final String update = "UPDATE kendaraan SET  nama_pemilik=?, nama_kendaraan=?, nama_merk=?, Tujuan=?, kecepatan=?, waktu=? , jarak=? WHERE id_User=?";
+    final String insert = "INSERT INTO kendaraan ( nama_pemilik, nama_kendaraan, nama_merk, tujuan, kecepatan, waktu , jarak) VALUES (?,?,?,?,?,?,?)";
+    final String update = "UPDATE kendaraan SET  nama_pemilik=?, nama_kendaraan=?, nama_merk=?, tujuan=?, kecepatan=?, waktu=? , jarak=? WHERE id_User=?";
     final String delete = "DELETE FROM kendaraan WHERE id_User=?";
     final String select = "SELECT * FROM kendaraan ";
     final String cari   = "SELECT * FROM kendaraan WHERE id_User LIKE ?";
@@ -35,6 +35,10 @@ public class DAOKendaraan implements KendaraanInterface{
     public DAOKendaraan() {
         connection = ConnectionDB.connection();
     }
+
+    
+
+    
     
     
     
@@ -114,11 +118,12 @@ public class DAOKendaraan implements KendaraanInterface{
     }
     @Override
     public List<ModelKendaraan> getAll() {
-        List<ModelKendaraan> kendaraan =null;
+        List<ModelKendaraan> kendaraan = null;
         
         try {
             kendaraan = new ArrayList<ModelKendaraan>();
-            Statement st = connection.createStatement();
+            Statement st = (Statement) connection.createStatement();
+            
             ResultSet rs = st.executeQuery(select);
             while(rs.next()){
                 ModelKendaraan md = new ModelKendaraan();
@@ -126,11 +131,11 @@ public class DAOKendaraan implements KendaraanInterface{
                 md.setNama_pemilik(rs.getString("nama_pemilik"));
                 md.setNama_kendaraan(rs.getString("nama_kendaraan"));
                 md.setNama_merk(rs.getString("nama_merk"));
-                md.setTujuan(rs.getString("Tujuan"));
+                md.setTujuan(rs.getString("tujuan"));
                 md.setKecepatan(rs.getInt("kecepatan"));
                 md.setWaktu(rs.getInt("waktu"));
                 md.setJarak(rs.getInt("jarak"));
-                
+                kendaraan.add(md);
             }
         } catch (SQLException ex) {
            ex.printStackTrace();
@@ -141,10 +146,10 @@ public class DAOKendaraan implements KendaraanInterface{
 
     @Override
     public List<ModelKendaraan> getCari(Integer id_User) {
-        List<ModelKendaraan> kendaraan=null;
+        List<ModelKendaraan> kendaraan =null;
         try{
             kendaraan = new ArrayList<ModelKendaraan>();
-            PreparedStatement stat = connection.prepareStatement(select);
+            PreparedStatement stat = connection.prepareStatement(cari);
             stat.setString(1,"%"+id_User+"%");
             ResultSet rs = stat.executeQuery();
             while(rs.next()){
@@ -153,7 +158,7 @@ public class DAOKendaraan implements KendaraanInterface{
                 md.setNama_pemilik(rs.getString("nama_pemilik"));
                 md.setNama_kendaraan(rs.getString("nama_kendaraan"));
                 md.setNama_merk(rs.getString("nama_merk"));
-                md.setTujuan(rs.getString("Tujuan"));
+                md.setTujuan(rs.getString("tujuan"));
                 md.setKecepatan(rs.getInt("kecepatan"));
                 md.setWaktu(rs.getInt("waktu"));
                 md.setJarak(rs.getInt("jarak"));
@@ -164,7 +169,4 @@ public class DAOKendaraan implements KendaraanInterface{
         }
         return kendaraan;
     }
-
-    
-    
 }

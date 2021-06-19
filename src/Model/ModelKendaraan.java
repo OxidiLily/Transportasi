@@ -14,7 +14,7 @@ public class ModelKendaraan {
     private String nama_pemilik;
     private String nama_kendaraan;
     private String nama_merk;
-    private String Tujuan;
+    private String tujuan;
     private Integer kecepatan;
     private Integer waktu;
     private Integer jarak;
@@ -52,11 +52,11 @@ public class ModelKendaraan {
     }
 
     public String getTujuan() {
-        return Tujuan;
+        return tujuan;
     }
 
     public void setTujuan(String Tujuan) {
-        this.Tujuan = Tujuan;
+        this.tujuan = Tujuan;
     }
 
     public Integer getKecepatan() {
@@ -82,10 +82,4 @@ public class ModelKendaraan {
     public void setJarak(Integer jarak) {
         this.jarak = jarak;
     }
-
-    public Object getJarakTxt() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    
 }

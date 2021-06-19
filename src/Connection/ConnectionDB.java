@@ -18,14 +18,15 @@ import javax.swing.JOptionPane;
  */
 public class ConnectionDB {
     static Connection con;
-    private static String pbo;
+    
     
     public static Connection connection(){
         if(con == null){
             MysqlDataSource data = new MysqlDataSource();
             data.setPort(3306);
-            data.setDatabaseName(pbo);
+            data.setDatabaseName("pbo");
             data.setUser("root");
+            data.setPassword("");
          
             try{
                 con = data.getConnection();

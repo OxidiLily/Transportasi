@@ -92,10 +92,10 @@ public class TampilanUtama extends javax.swing.JFrame {
         String password = "asd";
         
         if (usernameTxt.getText().equals(username) && passwordTxt.getText().equals(password)){
-            JOptionPane.showMessageDialog(null, "Login Berhasil");
-            DataForm data = new DataForm();// memanggil kelas OptionMenu
-            data.setVisible(true);             // run kelas OptionMenu   
-            this.dispose();                          // close LoginForm, open OptionMenu
+           
+            DataForm login = new DataForm();
+            login.setVisible(true);
+            this.dispose();
         } else{
             JOptionPane.showMessageDialog(null, "username/password Salah");
         }

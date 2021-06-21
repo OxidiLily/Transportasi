@@ -15,7 +15,7 @@ import java.util.List;
 public interface KendaraanInterface {
     public void insert(ModelKendaraan tambah);
     public void update(ModelKendaraan ubah);
-    public void delete(int id_User);
+    public void delete(int hapus);
     
     public List<ModelKendaraan> getAll();
     public List<ModelKendaraan> getCari(Integer id_User);

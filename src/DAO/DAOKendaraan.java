@@ -15,8 +15,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -25,23 +23,16 @@ import java.util.logging.Logger;
 public class DAOKendaraan implements KendaraanInterface{
 
     Connection connection;
-    final String insert = "INSERT INTO kendaraan ( nama_pemilik, nama_kendaraan, nama_merk, tujuan, kecepatan, waktu , jarak) VALUES (?,?,?,?,?,?,?)";
-    final String update = "UPDATE kendaraan SET  nama_pemilik=?, nama_kendaraan=?, nama_merk=?, tujuan=?, kecepatan=?, waktu=? , jarak=? WHERE id_User=?";
-    final String delete = "DELETE FROM kendaraan WHERE id_User=?";
-    final String select = "SELECT * FROM kendaraan ";
-    final String cari   = "SELECT * FROM kendaraan WHERE id_User LIKE ?";
+    final String insert = "INSERT INTO kendaraan (nama_pemilik, nama_kendaraan, nama_merk, tujuan, kecepatan, waktu , jarak) VALUES (?,?,?,?,?,?,?);";
+    final String update = "UPDATE kendaraan SET nama_pemilik=?, nama_kendaraan=?, nama_merk=?, tujuan=?, kecepatan=?, waktu=?, jarak=? WHERE id_User=?;";
+    final String delete = "DELETE FROM kendaraan WHERE id_User = ?;";
+    final String select = "SELECT * FROM kendaraan;";
+    final String cari   = "SELECT * FROM kendaraan WHERE id_User LIKE ?;";
     private int id_User;
 
     public DAOKendaraan() {
         connection = ConnectionDB.connection();
     }
-
-    
-
-    
-    
-    
-    
     
     @Override
     public void insert(ModelKendaraan tambah) {
@@ -76,7 +67,7 @@ public class DAOKendaraan implements KendaraanInterface{
         PreparedStatement stat = null;
         try {
             stat = connection.prepareStatement(delete);
-            stat.setInt(1, id_User);
+            stat.setInt(1, hapus);
             stat.executeUpdate();
             
         } catch (SQLException ex) {
@@ -101,12 +92,9 @@ public class DAOKendaraan implements KendaraanInterface{
             stat.setInt(5,ubah.getKecepatan());
             stat.setInt(6,ubah.getWaktu());
             stat.setInt(7,ubah.getJarak());
+            stat.setInt(8,ubah.getId_User());
             stat.executeUpdate();
-            ResultSet rs = stat.getGeneratedKeys();
-            while(rs.next()){
-                ubah.setId_User(rs.getInt(1));
-            }    
-        } catch (SQLException ex) {
+        } catch (SQLException ex){
             ex.printStackTrace();
         } finally{
             try{

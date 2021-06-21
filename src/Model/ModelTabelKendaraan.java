@@ -6,7 +6,6 @@
 package Model;
 
 import java.util.List;
-import static javax.swing.UIManager.get;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -71,11 +70,11 @@ public class ModelTabelKendaraan extends AbstractTableModel {
             case 4:
                 return "Tujuan";
             case 5:
-                return "Kecepatan";
+                return "Kecepatan (KM/Jam)";
             case 6:
-                return "Waktu";
+                return "Waktu (Jam)";
             case 7:
-                return "Jarak";
+                return "Jarak (KM)";
             default:
                 return null;
         }

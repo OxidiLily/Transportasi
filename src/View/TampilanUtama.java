@@ -5,6 +5,14 @@
  */
 package View;
 
+import Connection.ConnectionDB;
+import Controller.ControllerKendaraan;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,13 +20,15 @@ import javax.swing.JOptionPane;
  * @author My MSI
  */
 public class TampilanUtama extends javax.swing.JFrame {
-
+    ControllerKendaraan CK;
     /**
      * Creates new form TampilanUtama
      */
     public TampilanUtama() {
         initComponents();
         setLocationRelativeTo(this);
+        
+      
     }
 
     /**
@@ -30,7 +40,7 @@ public class TampilanUtama extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        passwordTxt = new javax.swing.JPasswordField();
+        passTxt = new javax.swing.JPasswordField();
         loginbtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -61,12 +71,12 @@ public class TampilanUtama extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                    .addComponent(passwordTxt))
+                    .addComponent(passTxt))
                 .addGap(18, 18, 18))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(151, 151, 151))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,27 +88,28 @@ public class TampilanUtama extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                    .addComponent(passTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
                 .addComponent(loginbtn)
-                .addGap(29, 29, 29))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
-        String username = "asd";
-        String password = "asd";
-        
-        if (usernameTxt.getText().equals(username) && passwordTxt.getText().equals(password)){
-           
-            DataForm login = new DataForm();
-            login.setVisible(true);
-            this.dispose();
-        } else{
-            JOptionPane.showMessageDialog(null, "username/password Salah");
-        }
+       //username & password
+       String username = "asd";
+       String password = "asd";
+            if(username.equals(usernameTxt.getText()) && password.equals(passTxt.getText())){
+                JOptionPane.showMessageDialog(null, "berhasil login");
+                this.setVisible(false);
+                new DataForm().setVisible(true);
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "username atau password salah");
+                CK.reset();
+            }
     }//GEN-LAST:event_loginbtnActionPerformed
 
     /**
@@ -140,7 +151,8 @@ public class TampilanUtama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton loginbtn;
-    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JPasswordField passTxt;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
+
 }

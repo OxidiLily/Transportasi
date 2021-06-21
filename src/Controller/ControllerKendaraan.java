@@ -46,7 +46,7 @@ public class ControllerKendaraan {
     }
     
     public void isiKotak(int row){
-        frame.getUserTxt().setText(String.valueOf(kendaraan.get(row).getId_User()));
+        frame.getUserTxt().setText(kendaraan.get(row).getId_User().toString());
         frame.getNamaTxt().setText(kendaraan.get(row).getNama_pemilik());
         frame.getKendaraanTxt().setText(kendaraan.get(row).getNama_kendaraan());
         frame.getMerkTxt().setText(kendaraan.get(row).getNama_merk());
@@ -64,9 +64,9 @@ public class ControllerKendaraan {
             tambah.setNama_kendaraan(frame.getKendaraanTxt().getText());
             tambah.setTujuan(frame.getTujuanTxt().getText());
             tambah.setNama_merk(frame.getMerkTxt().getText());
-            tambah.setKecepatan(Integer.valueOf(frame.getKecepatanTxt().getText()));
-            tambah.setWaktu(Integer.valueOf(frame.getWaktuTxt().getText()));
-            tambah.setJarak(Integer.valueOf(frame.getJarakTxt().getText()));
+            tambah.setKecepatan(Integer.parseInt(frame.getKecepatanTxt().getText()));
+            tambah.setWaktu(Integer.parseInt(frame.getWaktuTxt().getText()));
+            tambah.setJarak(Integer.parseInt(frame.getJarakTxt().getText()));
             interfaceK.insert(tambah);
             
         }else{
@@ -76,7 +76,6 @@ public class ControllerKendaraan {
     public void delete(){
         if (!frame.getUserTxt().getText().trim().isEmpty()){
             int id_User = Integer.parseInt(frame.getUserTxt().getText());
-            
             interfaceK.delete(id_User);
             JOptionPane.showMessageDialog(null, "Data di Hapus");
         } else{
@@ -84,29 +83,34 @@ public class ControllerKendaraan {
         }
     }
     public void update (){
-        if (!frame.getUserTxt().getText().trim().isEmpty()){
+        if (!frame.getKecepatanTxt().getText().isEmpty() & !frame.getWaktuTxt().getText().isEmpty()& !frame.getNamaTxt().getText().isEmpty()
+            & !frame.getKendaraanTxt().getText().isEmpty() & !frame.getMerkTxt().getText().isEmpty() & !frame.getTujuanTxt().getText().isEmpty()){
             
             ModelKendaraan ubah = new ModelKendaraan();
             
             ubah.setNama_pemilik(frame.getNamaTxt().getText());
             ubah.setNama_kendaraan(frame.getKendaraanTxt().getText());
-            ubah.setTujuan(frame.getTujuanTxt().getText());
             ubah.setNama_merk(frame.getMerkTxt().getText());
+            ubah.setTujuan(frame.getTujuanTxt().getText());
+            ubah.setKecepatan(Integer.parseInt(frame.getKecepatanTxt().getText()));
+            ubah.setWaktu(Integer.parseInt(frame.getWaktuTxt().getText()));
+            ubah.setJarak(Integer.parseInt(frame.getJarakTxt().getText()));
+            ubah.setId_User(Integer.parseInt(frame.getUserTxt().getText()));
+            interfaceK.update(ubah);
             
-        interfaceK.update(ubah);
             JOptionPane.showMessageDialog(null, "Data di Perbarui");
         } else{
             JOptionPane.showMessageDialog(null, "Data gagal di Perbarui");
         }
     }
     public void isiCari(){
-        kendaraan = interfaceK.getCari( Integer.valueOf(frame.getUserTxt().getText()));
+        kendaraan = interfaceK.getCari(Integer.parseInt(frame.getUserTxt().getText()));
         ModelTabelKendaraan mtk = new ModelTabelKendaraan(kendaraan);
         frame.getTableData().setModel(mtk);    
     }
     public void cari(){
         if(!frame.getUserTxt().getText().trim().isEmpty()){
-            interfaceK.getCari(Integer.valueOf(frame.getUserTxt().getText()));
+            interfaceK.getCari(Integer.parseInt(frame.getUserTxt().getText()));
             isiCari();
         }else{
             JOptionPane.showMessageDialog(null, "Periksa Data User ID yang anda input");

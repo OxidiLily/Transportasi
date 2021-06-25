@@ -21,7 +21,8 @@ public class ControllerKendaraan {
     DataForm frame;
     KendaraanInterface interfaceK;
     List<ModelKendaraan> kendaraan;        
-
+    
+    //contructor
     public ControllerKendaraan(DataForm frame) {
         this.frame = frame;
         interfaceK = new DAOKendaraan();
@@ -58,7 +59,8 @@ public class ControllerKendaraan {
     public void insert(){
         if (!frame.getKecepatanTxt().getText().isEmpty() & !frame.getWaktuTxt().getText().isEmpty()& !frame.getNamaTxt().getText().isEmpty()
             & !frame.getKendaraanTxt().getText().isEmpty() & !frame.getMerkTxt().getText().isEmpty() & !frame.getTujuanTxt().getText().isEmpty()){
-             ModelKendaraan tambah = new ModelKendaraan();
+            
+            ModelKendaraan tambah = new ModelKendaraan();
             
             tambah.setNama_pemilik(frame.getNamaTxt().getText());
             tambah.setNama_kendaraan(frame.getKendaraanTxt().getText());

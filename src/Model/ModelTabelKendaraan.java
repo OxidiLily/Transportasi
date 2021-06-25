@@ -20,8 +20,6 @@ public class ModelTabelKendaraan extends AbstractTableModel {
         this.kendaraan = kendaraan;
     }
     
-    
-    
     @Override
     public int getRowCount() {
         return kendaraan.size();

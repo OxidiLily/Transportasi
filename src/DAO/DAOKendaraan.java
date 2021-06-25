@@ -28,7 +28,7 @@ public class DAOKendaraan implements KendaraanInterface{
     final String delete = "DELETE FROM kendaraan WHERE id_User = ?;";
     final String select = "SELECT * FROM kendaraan;";
     final String cari   = "SELECT * FROM kendaraan WHERE id_User LIKE ?;";
-    private int id_User;
+    
 
     public DAOKendaraan() {
         connection = ConnectionDB.connection();
@@ -48,8 +48,8 @@ public class DAOKendaraan implements KendaraanInterface{
             stat.setInt(7,tambah.getJarak());
             stat.executeUpdate();
             ResultSet rs = stat.getGeneratedKeys();
-            while(rs.next()){
-                tambah.setId_User(rs.getInt(1));
+            while(rs.next()){                        //meloop sebanyak data yang ada
+              tambah.setId_User(rs.getInt(1));
             }    
         } catch (SQLException ex) {
             ex.printStackTrace();

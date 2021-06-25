@@ -5,14 +5,7 @@
  */
 package View;
 
-import Connection.ConnectionDB;
 import Controller.ControllerKendaraan;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,6 +40,7 @@ public class TampilanUtama extends javax.swing.JFrame {
         usernameTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
 
         loginbtn.setText("LOGIN");
         loginbtn.addActionListener(new java.awt.event.ActionListener() {
